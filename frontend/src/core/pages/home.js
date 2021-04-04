@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import Layout from "../components/layout";
 
-const Home = () => {
-    return (<div className="text-center">HOME PAGE</div>);
-}
+const Home = () => (<Layout title="Home" description="This is the Home Page">
+    ...
+</Layout>);
 
 export default Home;
