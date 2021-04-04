@@ -1,10 +1,7 @@
 import React from 'react';
-// import Menu from '../../components/menu';
+import Layout from "../components/layout";
 
-
-const Signin = () => {
-    return (
-    <div className="text-center">SIGNIN PAGE</div>);
-}
-
+const Signin = () => (<Layout title="Signin" description="This is the Signin Page">
+    ...
+</Layout>);
 export default Signin;
