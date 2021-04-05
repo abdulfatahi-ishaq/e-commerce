@@ -1,7 +1,10 @@
-import React from 'react';
-import Layout from "../components/layout";
+import React from "react";
+import Layout from "../../components/layout";
 
-const Signin = () => (<Layout title="Signin" description="This is the Signin Page">
+
+const Signin = () => (
+  <Layout title="Signin" description="This is the Signin Page">
     ...
-</Layout>);
+  </Layout>
+);
 export default Signin;
