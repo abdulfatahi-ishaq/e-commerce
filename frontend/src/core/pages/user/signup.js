@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layout";
 
 const Signup = () => {
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    error: "",
+    success: "",
+  });
   const signUpForm = () => (
     <form>
       <div className="form-group">
@@ -16,11 +23,16 @@ const Signup = () => {
         <label className="text-muted">Password</label>
         <input type="password" className="form-control" />
       </div>
+      <br />
       <button className="btn btn-dark">Submit</button>
     </form>
   );
   return (
-    <Layout title="Signup" description="This is the Signup Page" className="container col-md-8 offset-md-2">
+    <Layout
+      title="Signup"
+      description="This is the Signup Page"
+      className="container col-md-8 offset-md-2"
+    >
       {signUpForm()}
     </Layout>
   );
