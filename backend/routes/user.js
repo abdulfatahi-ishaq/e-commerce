@@ -1,8 +1,8 @@
+const { signup } = require('../controllers/user/user');
 let {express} = require('../modules/imports');
+
 let router = express.Router();
 
-router.get('/',(req,res)=>{
-    res.send("Hello from Node Again!");
-})
+router.get('/',signup);
 
 module.exports = router;
