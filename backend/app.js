@@ -6,12 +6,12 @@ let app = express();
 dotenv.config();
 
 //Initiate Connection to DB
-require('./controllers/database/dbcon');
+require('./core/database/dbcon');
 
 // Routes Middleware
 app.use('/api',require('./routes/user'));    //User Routes
 
 // Start Server
-app.listen(3000,()=>{
+app.listen(process.env.port || process.env.PORT,()=>{
     console.log("Server started on port 3000:")
 });
