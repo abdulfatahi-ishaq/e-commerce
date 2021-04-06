@@ -15,10 +15,16 @@ const Signup = () => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  // const submitForm = (event) => {
-  //   event.preventDefault();
-  //   Signup();
-  // };
+  let {name, email, password} = values;
+
+  let signUp = (name,email,password) => {
+    console.log(name,email,password)
+  }
+
+  let clickSubmit = (event) => {
+    event.preventDefault()
+    signUp(name,email,password)
+  }
 
   // const signup = (name,email,password) => {
   //   console.log(name,email,password);
@@ -51,7 +57,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <button className="btn btn-dark">Submit</button>
+      <button onClick={clickSubmit} className="btn btn-dark">Submit</button>
     </form>
   );
   return (
@@ -61,7 +67,7 @@ const Signup = () => {
       className="container col-md-8 offset-md-2"
     >
       {signUpForm()}
-      {JSON.stringify(values)}
+      {/* {JSON.stringify(values)} */}
     </Layout>
   );
 };
