@@ -7,21 +7,48 @@ const Signup = () => {
     email: "",
     password: "",
     error: "",
-    success: "",
+    success: false,
   });
+
+  //Methods
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, error: false, [name]: event.target.value });
+  };
+
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   Signup();
+  // };
+
+  // const signup = (name,email,password) => {
+  //   console.log(name,email,password);
+  // }
+
   const signUpForm = () => (
     <form>
       <div className="form-group">
         <label className="text-muted">Name</label>
-        <input type="text" className="form-control" />
+        <input
+          onChange={handleChange("name")}
+          type="text"
+          className="form-control"
+        />
       </div>
       <div className="form-group">
         <label className="text-muted">Email</label>
-        <input type="email" className="form-control" />
+        <input
+          onChange={handleChange("email")}
+          type="email"
+          className="form-control"
+        />
       </div>
       <div className="form-group">
         <label className="text-muted">Password</label>
-        <input type="password" className="form-control" />
+        <input
+          onChange={handleChange("password")}
+          type="password"
+          className="form-control"
+        />
       </div>
       <br />
       <button className="btn btn-dark">Submit</button>
@@ -34,6 +61,7 @@ const Signup = () => {
       className="container col-md-8 offset-md-2"
     >
       {signUpForm()}
+      {JSON.stringify(values)}
     </Layout>
   );
 };
