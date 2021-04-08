@@ -1,6 +1,6 @@
-const { Mongoose } = require("mongoose");
 let { mongoose } = require("../../modules/imports");
 
+//Schemas
 module.exports = {
   userSchema: new mongoose.Schema({
     name: { type: String, required: true, trim: true, maxlength: 32 },
@@ -10,3 +10,8 @@ module.exports = {
     history: { type: Array, default: [] },
   },{timestamps:true}),
 };
+
+//Models
+module.exports = {
+    user: new mongoose.model("User", this.userSchema)
+}
