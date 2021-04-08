@@ -11,7 +11,3 @@ module.exports = {
   },{timestamps:true}),
 };
 
-//Models
-module.exports = {
-    User: new mongoose.model("User", userSchema)
-}
