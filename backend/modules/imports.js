@@ -5,4 +5,5 @@ module.exports = {
   bodyParser: require("body-parser"),
   morgan: require("morgan"),
   multer: require("multer"),
+  bcrypt: require('bcryptjs')
 };
