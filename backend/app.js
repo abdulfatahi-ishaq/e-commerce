@@ -1,6 +1,10 @@
 // Imports Middlewares
-let {express,dotenv} = require('./modules/imports');
+let {express,dotenv, bodyParser} = require('./modules/imports');
 let app = express();
+
+//Usages
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //Environment Variable 
 dotenv.config();
