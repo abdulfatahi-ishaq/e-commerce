@@ -13,5 +13,5 @@ module.exports = {
 
 //Models
 module.exports = {
-    user: new mongoose.model("User", this.userSchema)
+    User: new mongoose.model("User", userSchema)
 }

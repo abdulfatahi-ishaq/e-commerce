@@ -3,6 +3,6 @@ let {express} = require('../modules/imports');
 
 let router = express.Router();
 
-router.get('/',signup);
+router.get('/signup',signup);
 
 module.exports = router;

@@ -1,5 +1,11 @@
-const {express} = require('../../modules/imports');
+let { User } = require("../../core/database/schema");
 
-exports.signup = (req,res) => {
-    res.send("Hello from Node! Once More");
-}
+exports.signup = (req, res) => {
+  const user = new User(req.body);
+  user.save((err, user) => {
+    if (err) {
+      return res.status(400).json({ err });
+    }
+    res.json({ user });
+  });
+};
