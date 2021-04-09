@@ -18,6 +18,7 @@ exports.signup = (req, res) => {
       if (err) {
         return res.status(400).json({ err });
       }
+      user.password = undefined;
       res.json({ user });
     });
   });
