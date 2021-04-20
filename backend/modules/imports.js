@@ -7,4 +7,6 @@ module.exports = {
   multer: require("multer"),
   bcrypt: require("bcryptjs"),
   expressValidator: require("express-validator"),
+  expressJwt:require('express-jwt'), //Gene
+  jwt:require('jsonwebtoken'), //Authorize User
 };
