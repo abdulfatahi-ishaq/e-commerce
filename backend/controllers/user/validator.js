@@ -1,4 +1,4 @@
-exports.signupValidator = (req, res) => {
+exports.signupValidator = (req, res, next) => {
   req
     .check("email", "Email should contain 3 to 32 characters")
     .matches(/.+\@.+\..+/)
@@ -13,7 +13,7 @@ exports.signupValidator = (req, res) => {
 
   const errors = req.validationErrors();
   if (errors) {
-    const firstError = errors.map((error) => error.message)[0];
+    const firstError = errors.map((error) => error.msg)[0];
     return res.status(400).json({ error: firstError });
   }
 
