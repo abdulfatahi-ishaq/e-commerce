@@ -1,4 +1,4 @@
-const { signup, signin, signout, isAuthorized } = require("../controllers/user/user");
+const { signup, signin, signout, isAuthorized } = require("../controllers/user/auth");
 const { signupValidator } = require("../controllers/user/validator");
 let { express, cookieParser } = require("../modules/imports");
 
