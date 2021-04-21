@@ -15,7 +15,8 @@ dotenv.config();
 require('./core/database/dbcon');
 
 // Routes Middleware
-app.use('/api',require('./routes/auth'));    //User Routes
+app.use('/api',require('./routes/auth'));    //Auth Routes
+app.use('/api',require('./routes/user'));    //Auth Routes
 
 // Start Server
 app.listen(process.env.port || process.env.PORT,()=>{

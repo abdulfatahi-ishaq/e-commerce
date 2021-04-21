@@ -5,7 +5,7 @@ let { bcrypt, jwt, expressJwt } = require("../core/middlewares/imports");
 exports.isAuthorized = expressJwt({
   secret:process.env.JWT_Secret,
   userProperty:'auth',
-  algorithms:['RS256']
+  algorithms:['HS256']
 })
 
 //Signup
