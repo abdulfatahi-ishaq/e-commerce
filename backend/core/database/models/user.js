@@ -1,4 +1,4 @@
-let { mongoose } = require("../../modules/imports");
+let { mongoose } = require("../../middlewares/imports");
 let {userSchema} = require("../schema");
 
 //Models

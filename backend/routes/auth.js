@@ -1,6 +1,6 @@
 const { signup, signin, signout, isAuthorized } = require("../controllers/user/auth");
 const { signupValidator } = require("../controllers/user/validator");
-let { express, cookieParser } = require("../core/modules/imports");
+let { express, cookieParser } = require("../core/middlewares/imports");
 
 let router = express.Router();
 
