@@ -1,4 +1,4 @@
-let { mongoose } = require("../../modules/imports");
+let { mongoose } = require("../../middlewares/imports");
 
 //Schemas
 module.exports = {

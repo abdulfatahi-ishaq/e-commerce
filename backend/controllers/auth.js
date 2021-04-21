@@ -1,5 +1,5 @@
-let { User } = require("../../core/database/models/user");
-let { bcrypt, jwt, expressJwt } = require("../../core/modules/imports");
+let { User } = require("../core/database/models/user");
+let { bcrypt, jwt, expressJwt } = require("../core/middlewares/imports");
 
 //Authenticate
 exports.isAuthorized = expressJwt({

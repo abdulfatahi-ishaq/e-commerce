@@ -1,5 +1,5 @@
 let { mongoose } = require("../../middlewares/imports");
-let {userSchema} = require("../schema");
+let {userSchema} = require("../schemas/user");
 
 //Models
 module.exports = {
