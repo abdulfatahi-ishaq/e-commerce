@@ -10,7 +10,7 @@ exports.signup = (req, res) => {
       history,
       name,
       email,
-      password : hashedpassword,
+      password: hashedpassword,
       createdAt,
       updatedAt,
     });
@@ -24,25 +24,38 @@ exports.signup = (req, res) => {
   });
 };
 
-exports.signin = (req,res) => {
-  const {email,password} = req.body;
+exports.signin = (req, res) => {
+  const { email, password } = req.body;
 
-  User.findOne({email},(err,user)=>{
-    if(err || !user){
+  User.findOne({ email }, (err, user) => {
+    if (err || !user) {
       return res.status(400).json({
-        err:"User does not exist"
+        err: "User does not exist"
       })
     }
     //Compare Password using bcrypt
+    else if (user) {
+       bcrypt.compare(password, user.password, (err, result) => {
+        if (result === false) {
+          return res.status(400).json({
+            err: "Incorrect Password"
+          })
+        }
+        //Generate signed token
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_Secret);
 
-    //Generate signed token
-    const token = jwt.sign({_id:user._id},process.env.JWT_Secret);
+        //Saved token with expiration time
+        res.cookie("name", token, { expiry: new Date() + 9999 });
 
-    //Saved token with expiration time
-    res.cookie("name",token,{expiry: new Date() + 9999});
-
-    //Destructure and return json response
-    const {_id,name,email,role} = user;
-    return res.json({token,user:{_id,name,email,role}})
+        //Destructure and return json response
+        const { _id, name, email, role } = user;
+        return res.json({ token, user: { _id, name, email, role } })
+      })
+    }
   })
+}
+
+exports.signout = (req,res) => {
+  res.clearCookie("name");
+  res.json({message:"Sign out successful!"});
 }
