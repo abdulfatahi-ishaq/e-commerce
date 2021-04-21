@@ -1,6 +1,14 @@
 let { User } = require("../../core/database/models");
-let { bcrypt, jwt } = require("../../modules/imports");
+let { bcrypt, jwt, expressJwt } = require("../../modules/imports");
 
+//Authenticate
+exports.isAuthorized = expressJwt({
+  secret:process.env.JWT_Secret,
+  userProperty:'auth',
+  algorithms:['RS256']
+})
+
+//Signup
 exports.signup = (req, res) => {
   let { role, history, name, email, password, createdAt, updatedAt } = req.body;
   bcrypt.hash(password, 10, (err, hashedpassword) => {
@@ -24,6 +32,7 @@ exports.signup = (req, res) => {
   });
 };
 
+//Signin
 exports.signin = (req, res) => {
   const { email, password } = req.body;
 
@@ -55,7 +64,9 @@ exports.signin = (req, res) => {
   })
 }
 
+//Signout
 exports.signout = (req,res) => {
   res.clearCookie("name");
   res.json({message:"Sign out successful!"});
 }
+

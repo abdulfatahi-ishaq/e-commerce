@@ -1,6 +1,6 @@
-const { signup, signin, signout } = require("../controllers/user/user");
+const { signup, signin, signout, isAuthorized } = require("../controllers/user/user");
 const { signupValidator } = require("../controllers/user/validator");
-let { express } = require("../modules/imports");
+let { express, cookieParser } = require("../modules/imports");
 
 let router = express.Router();
 
@@ -11,5 +11,5 @@ router.post("/signup",signupValidator, signup);
 router.post("/signin",signin);
 
 //Signin
-router.get("/signout",signout);
+router.get("/signout",isAuthorized,signout);
 module.exports = router;

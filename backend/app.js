@@ -1,8 +1,9 @@
 // Imports Middlewares
-let {express,dotenv, bodyParser, expressValidator} = require('./modules/imports');
+let {express,dotenv, bodyParser, expressValidator,cookieParser} = require('./modules/imports');
 let app = express();
 
 //Usages
+
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(expressValidator())
