@@ -19,3 +19,25 @@ exports.signupValidator = (req, res, next) => {
 
   next();
 };
+
+//Authenticate Login with right user
+exports.isAuth = (req,res, next) =>{
+  let user = req.profile._id == req.auth._id;
+  console.log(req.profile._id == req.auth._id)
+  console.log(req.profile._id)
+  console.log(req.auth._id)
+  if(!user){
+    return res.status(400).json({error:"Access Denied!"})
+  }
+  next();
+};
+
+
+//Authenticate has Admin
+exports.isAdmin = (req,res, next) =>{
+  // console.log(req.profile.role);
+  if(req.profile.role === 0){
+    return res.status(400).json({error:"Admin Resources! Access Denied"})
+  }
+  next()
+};
