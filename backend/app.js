@@ -1,5 +1,5 @@
 // Imports Middlewares
-let {express,dotenv, bodyParser, expressValidator,cookieParser} = require('./modules/imports');
+let {express,dotenv, bodyParser, expressValidator,cookieParser} = require('./core/modules/imports');
 let app = express();
 
 //Usages
