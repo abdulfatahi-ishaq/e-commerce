@@ -1,4 +1,4 @@
-let { User } = require("../core/database/models/user");
+const User = require("../core/database/models/user");
 let { bcrypt, jwt, expressJwt } = require("../core/middlewares/imports");
 
 //Authenticate
