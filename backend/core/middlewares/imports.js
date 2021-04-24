@@ -10,4 +10,7 @@ module.exports = {
   expressValidator: require("express-validator"),
   expressJwt: require("express-jwt"), //Gene
   jwt: require("jsonwebtoken"), //Authorize User
+  _:require('lodash'), 
+  formidable : require('formidable'),
+  fs : require('fs')
 };
