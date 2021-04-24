@@ -17,7 +17,7 @@ require('./core/database/dbcon');
 // Routes Middleware
 app.use('/api',require('./routes/auth'));    //Auth Routes
 app.use('/api',require('./routes/user'));    //User Routes
-app.use('/api',require('./routes/category')); //Category Routes
+app.use('/api',require('./routes/category'));  //Category Routes
 
 // Start Server
 app.listen(process.env.port || process.env.PORT,()=>{

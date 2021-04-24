@@ -1,6 +1,6 @@
 const Category = require("../core/database/models/category");
 
-exports.create = (req,req) => {
+exports.create = (req,res) => {
     const category = new Category(req.body);
 
     category.save((err, category)=>{
