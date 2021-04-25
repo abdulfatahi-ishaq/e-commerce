@@ -4,7 +4,7 @@ let router = express.Router();
 const { isAuthorized } = require("../controllers/auth");
 const { userById } = require("../controllers/user");
 const { isAuth, isAdmin } = require("../core/middlewares/validator");
-const {create,productById,read,remove,update, list, listRelated,listCategories,listBySearch} = require('../controllers/product');
+const {create,productById,read,remove,update, list, listRelated,listCategories,listBySearch,photo} = require('../controllers/product');
 
 //CRUD
 router.post('/product/create/:userId', isAuthorized, isAuth, isAdmin, create);
@@ -17,6 +17,7 @@ router.get('/products',list);
 router.get('/products/related/:productId',listRelated);
 router.get('/products/categories',listCategories);
 router.post('/products/search',listBySearch);
+router.get('/product/photo/:photoId',photo);
 
 // Query by Params
 router.param('userId',userById);

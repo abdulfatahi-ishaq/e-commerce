@@ -12,5 +12,6 @@ module.exports = {
   jwt: require("jsonwebtoken"), //Authorize User
   _:require('lodash'), 
   formidable : require('formidable'),
-  fs : require('fs')
+  fs : require('fs'),
+  cors:require('cors')
 };

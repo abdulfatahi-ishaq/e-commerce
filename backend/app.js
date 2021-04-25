@@ -1,12 +1,13 @@
 // Imports Middlewares
-let {express,dotenv, bodyParser, expressValidator,cookieParser} = require('./core/middlewares/imports');
+let {express,dotenv, bodyParser, expressValidator,cookieParser,cors} = require('./core/middlewares/imports');
 let app = express();
 
 //Usages
-
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(expressValidator())
+app.use(cookieParser())
+app.use(cors())
 
 //Environment Variable 
 dotenv.config();
