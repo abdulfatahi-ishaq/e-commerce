@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout";
-import {signUp} from "../../auth/functions";
+import { signUp } from "../../auth/functions";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -16,26 +17,27 @@ const Signup = () => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  let {name, email, password, error, success} = values;
+  let { name, email, password, error, success } = values;
 
   let clickSubmit = (event) => {
-    event.preventDefault()
-    signUp({name,email,password})
-    .then(data =>{
-      if(data.error){
-        setValues({...values,error:data.error,success:false})
-      }else{
-        setValues({
-          name:"",
-          email:"",
-          password:"",
-          error:"",
-          success:true
-        })
-      }
-    })
-    .catch()
-  }
+    event.preventDefault();
+    setValues({ ...values, error: false });
+    signUp({ name, email, password })
+      .then((data) => {
+        if (data.error) {
+          setValues({ ...values, error: data.error, success: false });
+        } else {
+          setValues({
+            name: "",
+            email: "",
+            password: "",
+            error: "",
+            success: true,
+          });
+        }
+      })
+      .catch();
+  };
 
   // const signup = (name,email,password) => {
   //   console.log(name,email,password);
@@ -71,23 +73,35 @@ const Signup = () => {
         />
       </div>
       <br />
-      <button onClick={clickSubmit} className="btn btn-dark">Submit</button>
+      <button onClick={clickSubmit} className="btn btn-dark">
+        Submit
+      </button>
     </form>
   );
 
-  //TODO: Show error to client
 
-  const showError = () =>{
-    <div className="alert alert-danger" style={{display : error ? "" : "none"}}>
-    {error}
-    </div>
-  }
+  const showError = () => {
+    return (
+      <div
+        className="alert alert-danger"
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    );
+  };
 
-  const showSuccess = () =>{
-    <div className="alert alert-info" style={{display : success ? "" : "none"}}>
-    Account Created Successfully. Click here to Signin
-    </div>
-  }
+  const showSuccess = () => {
+    return (
+      <div
+        className="alert alert-info"
+        style={{ display: success ? "" : "none" }}
+      >
+        Account Created Successfully. Click <Link to="/signin">here</Link> to
+        Signin
+      </div>
+    );
+  };
 
   return (
     <Layout
@@ -95,14 +109,11 @@ const Signup = () => {
       description="This is the Signup Page"
       className="container col-md-8 offset-md-2"
     >
-      {signUpForm()}
       {showError()}
       {showSuccess()}
-      {JSON.stringify(values)}
+      {signUpForm()}
     </Layout>
   );
 };
 
 export default Signup;
-
-
