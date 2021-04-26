@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout";
-import { signIn } from "../../auth/functions";
-import { Redirect } from "react-router";
+import { signIn,authenticate} from "../../auth/functions";
+import { Redirect } from "react-router-dom";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -11,26 +11,26 @@ const Signin = () => {
     loading: false,
     redirectToReferrer: false,
   });
-
+   
   //Methods
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
-
   let { email, password, error, loading, redirectToReferrer } = values;
-
   let clickSubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: false, loading: true });
+    setValues({ ...values, error: false, loading: true,redirectToReferrer:false });
     signIn({ email, password })
       .then((data) => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false });
         } else {
-          setValues({
-            ...values,
-            redirectToReferrer: true,
-          });
+          authenticate(data,()=>{
+            setValues({
+              ...values,
+              redirectToReferrer: true,
+            });
+          })
         }
       })
       .catch();
@@ -67,7 +67,7 @@ const Signin = () => {
     </form>
   );
 
-  //TODO: Show error to client
+  //TODO: Fix bug in signing up
 
   const showError = () => {
     return <div
@@ -87,7 +87,7 @@ const Signin = () => {
   };
 
   const redirectUser = () => {
-    if (redirectToReferrer) {
+    if (redirectToReferrer === true) {
       return <Redirect to="/" />;
     }
   };
@@ -98,9 +98,9 @@ const Signin = () => {
       description="This is the Signup Page"
       className="container col-md-8 offset-md-2"
     >
+      {showError()}
       {showLoading()}
       {signInForm()}
-      {showError()}
       {redirectUser()}
     </Layout>
   );
